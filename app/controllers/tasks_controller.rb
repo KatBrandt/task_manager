@@ -21,4 +21,8 @@ class TasksController < ApplicationController
 
     redirect_to '/tasks'
   end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
 end
