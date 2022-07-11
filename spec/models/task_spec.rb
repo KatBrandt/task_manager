@@ -11,6 +11,12 @@ describe Task, type: :model do
 
         expect(task.laundry?). to be true
       end
+
+      it 'returns true when description contains laundry' do
+        task = Task.create!(title: 'Clean clothes', description: 'Do the laundry')
+
+        expect(task.laundry?).to be true
+      end
     end
   end
 end
