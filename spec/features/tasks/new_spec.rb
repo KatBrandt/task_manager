@@ -6,7 +6,7 @@ describe 'New Task', type: :feature do
       it 'can create a new task' do
         visit '/tasks'
 
-        click_link 'New Task'
+        click_link 'Create New Task'
 
         expect(current_path).to eq '/tasks/new'
 

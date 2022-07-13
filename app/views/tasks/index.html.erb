@@ -11,4 +11,7 @@
   </form>
 <% end %>
 
-<a href="/tasks/new">Create New Task</a>
+<!-- <a href="/tasks/new">Create New Task</a> -->
+<!-- Can use Rails link helpers to write this same thing -->
+
+<%= link_to 'Create New Task', '/tasks/new' %>

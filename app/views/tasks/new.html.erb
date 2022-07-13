@@ -1,7 +1,20 @@
-<form action="/tasks" method="post">
+<!-- <form action="/tasks" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Enter a new task:</p>
   <input type='text' name='task[title]'/><br/>
   <textarea name='task[description]'></textarea></br>
   <input type='submit'/>
-</form>
+</form> -->
+
+<!-- Refactor with Rails form helpers -->
+
+<%= form_with url: "/tasks", method: :post, local: true do |form| %>
+<%# Tells the form the path and verb to use %>
+<%# form_with gives us the security rails needs so don't need the authenticity token %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.submit 'Create Task' %>
+<% end %>
