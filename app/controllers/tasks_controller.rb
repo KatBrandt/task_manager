@@ -12,10 +12,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    Task.create({
-      title: params[:title],
-      description: params[:description]
-      })
+    Task.create(task_params)
 
     redirect_to '/tasks'
   end
@@ -37,5 +34,10 @@ class TasksController < ApplicationController
   def destroy
     Task.destroy(params[:id])
     redirect_to '/tasks'
+  end
+
+  private
+  def task_params
+    params.permit(:title, :description)
   end
 end
