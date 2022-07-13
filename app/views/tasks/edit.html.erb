@@ -1,3 +1,4 @@
+<!--
 <form action="/tasks/<%= @task.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
@@ -6,3 +7,13 @@
   <textarea name='task[description]'><%= @task.description %></textarea><br/>
   <input type='submit'/>
 </form>
+
+ Refactor to use form helpers -->
+
+<%= form_with url: "/tasks/#{@task.id}", method: :patch, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.submit 'Update' %>
+<% end %>

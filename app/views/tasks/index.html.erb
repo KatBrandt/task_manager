@@ -1,14 +1,19 @@
 <h1>All Tasks</h1>
 
 <% @tasks.each do |task| %>
-  <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
+  <h4><%= link_to "#{task.title}", "/tasks/#{task.id}" %></h4>
+  <!-- <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3> -->
   <p><%= task.description %></p>
-  <a href="/tasks/<%= task.id %>/edit">Edit</a>
-  <form action="/tasks/<%= task.id %>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type='hidden' name='_method' value='DELETE'>
+   <!-- <a href="/tasks/<%= task.id %>/edit">Edit</a>
+   Refactored below to use a button_to %> -->
+  <!-- <form action="/tasks/<%= task.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
+    <!-- <input type='hidden' name='_method' value='DELETE'>
     <input type="submit" value="Delete"/>
-  </form>
+    refactor to use button_to -->
+    <%= button_to 'Edit', "/tasks/#{task.id}/edit", method: :get %>
+    <%= button_to 'Delete', "/tasks/#{task.id}", method: :delete %>
+  <!-- </form> -->
 <% end %>
 
 <!-- <a href="/tasks/new">Create New Task</a> -->
